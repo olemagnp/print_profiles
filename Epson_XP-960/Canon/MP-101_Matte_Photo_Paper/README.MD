@@ -19,3 +19,12 @@ __Quality__ | 5760dpi
 __Paper class__ | inkjet 
 __Ink Limit__ | 250 
 __Color Rendering Intent__ | No Color Correction
+
+# Argyll settings
+Key | Value
+----|------
+__Number of patches__ | 210
+__Paper size__ | A4
+__High quality points (-G)__ | True
+__Number of white test patches__ | 4
+__Number of grey test patches__ | 16
