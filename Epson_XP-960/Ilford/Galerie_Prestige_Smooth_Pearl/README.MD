@@ -1,7 +1,5 @@
 # General info
 
-Guide followed: https://www.clubsnap.com/threads/sharing-my-argyllcms-routines-on-the-x-rite-colormunki.1295547/
-
 Key | Value
 ----|------
 __Printer__ | Epson Expresson Photo XP-960
@@ -20,3 +18,12 @@ __Quality__ | 5760dpi
 __Paper class__ | Glossy
 __Ink Limit__ | 300
 __Color Rendering Intent__ | No Color Correction
+
+# Argyll Settings
+Key | Value
+----|------
+__Number of patches__ | 420
+__Paper size__ | A4
+__Number of white test patches__ | 8
+__Number of grey test patches__ | 16
+__Target res__ | 300
