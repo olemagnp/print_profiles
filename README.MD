@@ -112,3 +112,49 @@ p | Read patch by patch instead of strip by strip
 r | Continue on existing chart
 
 Navigate to the patch(es) that needs rereading by using `g`, and read them again, then repeat the profile generation process
+
+### Visual Inspection
+To inspect the new profile visually, two procedures are possible.
+First, to check the gamut plots against AdobeRGB and AppleRGB, perform the following steps:
+```bash
+iccgamut -v [-w] -ff -ir <name.icc>
+viewgam -t .3 -cn <path_to_AdobeRGB.gam> -cm <path_to_AppleRGB.gam> -cw <name.gam> <out_name>
+```
+This creates a `<name.gam>` file and a `<out_name.x3d.html>` file. Open the last one in a browser to inspect.
+
+Param | Explanation
+------|------------
+v | Verbose
+w | Output both .x3d.html and .gam files (optional)
+ff | Set function to forward
+ir | Set intent to relative colorimetric
+
+Param | Explanation
+------|------------
+t | Set transparency
+cn | Set natural color
+cm | Set magenta
+cw | Set white
+
+The second procedure consists of creating a test image and soft-proofing it with the profile:
+```bash
+timage -x [-t] -g 0 test-image.tif
+tificc -v -w16 -t1 -b -i <path_to_AdobeRGB.icc> -o <name.icc> test-image.tif print-image.tif
+```
+Now open `test-image.tif` and `print-image.tif` and inspect the differences.
+If there are non-smooth gradients in the in-gamut areas, there is likely a problem.
+
+Param | Explanation
+------|------------
+x | 16 bit output
+g | Set percentage towards grey
+t | Create rectangular boundary gamut test chart
+
+Param | Explanation
+------|------------
+v | Verbose
+w | Set output depth
+t1 | Set intent to relative colorimetric
+b | Use black point compensation
+i | Input profile
+o | Output profile
